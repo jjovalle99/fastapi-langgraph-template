@@ -1,0 +1,16 @@
+# {{ project_name }}  <-- Change this
+
+```
+uv tool run pre-commit install
+uv add fastapi[standard] \
+    langgraph-checkpoint-postgres \
+    langgraph \
+    langsmith \
+    loguru \
+    psycopg[binary,pool] \
+    pydantic-settings
+
+uv add ipykernel ipywidgets --group dev
+uv add pytest pytest-cov pytest-asyncio --group test
+uv add mypy ruff --group lint
+```

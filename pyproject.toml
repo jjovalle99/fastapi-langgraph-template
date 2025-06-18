@@ -1,0 +1,22 @@
+[project]
+name = "app"
+version = "0.1.0"
+description = "{{ project_description }}"
+authors = [{ name = "{{ author_name }}", email = "{{ author_email }}"}]
+readme = "README.md"
+requires-python = "~={{ python_version }}"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length=79
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.mypy]
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
