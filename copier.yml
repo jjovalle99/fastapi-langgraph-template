@@ -18,3 +18,8 @@ python_version:
   choices: ["3.13", "3.12", "3.11", "3.10"]
   help: Which Python version will this project use?
   default: "3.12"
+
+ci_run_tests:
+  type: bool
+  help: Should the CI run tests?
+  default: true
