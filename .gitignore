@@ -169,5 +169,3 @@ temp/
 # output/          # Generated output files
 # docs/_build/     # Documentation build directory
 # .secrets/        # Secret files directory
-# Copier answers file
-.copier-answers.yml
