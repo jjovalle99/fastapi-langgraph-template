@@ -28,6 +28,10 @@ uv add pytest pytest-cov pytest-asyncio --group test
 uv add mypy ruff --group lint
 ```
 
+## Usage
+- Setup the database using the script `scripts/initialize_db.py`.
+- Run the FastAPI application using uvicorn.
+
 ## Deployment
 
 ### CD configuration
@@ -38,3 +42,61 @@ deployment. To use it:
    `.github/workflows` directory.
 2. Configure the appropriate secrets in your GitHub repository.
 3. Update the secrets in the YAML file.
+
+## Project Structure
+
+```shell
+├── 📦 Dockerfile                   # Container configuration
+├── 🛠️ Makefile                     # Build, deployment and other commands
+├── 💬 prompts/                     # LLM prompts - Put all your prompts here
+│   └── system.jinja2               # Template for system messages
+├── 📋 pyproject.toml               # Project dependencies and configuration
+├── 🗄️ queries/                     # Database queries
+│   └── ddl/                        # Data definition language files
+│       ├── create_checkpoint_index.sql  # Index for LangGraph checkpoints
+│       └── create_schema.sql       # Database schema creation
+├── 📖 README.md                    # Project documentation
+├── 🔧 scripts/                     # Utility scripts
+│   └── initialize_db.py            # Database initialization script
+├── 🚀 server.py                    # FastAPI application entry point
+├── 📁 src/                         # Source code directory
+│   └── app/                        # Main application package
+│       ├── 🌐 api/                 # API layer
+│       │   ├── dependencies.py     # FastAPI dependencies
+│       │   ├── lifespan.py        # Application lifecycle management
+│       │   └── routers/           # API route definitions
+│       │       ├── chat.py        # Chat endpoints
+│       │       └── health.py      # Health check endpoints
+│       ├── ⚙️ config/              # Configuration management
+│       │   ├── database.py        # Database configuration
+│       │   ├── paths.py           # File paths configuration
+│       │   └── settings.py        # Application settings
+│       ├── 🗃️ db/                  # Database operations
+│       │   ├── crud_operations.py # Database CRUD operations
+│       │   ├── pool.py            # Connection pool management
+│       │   └── query_store.py     # SQL query management
+│       ├── 🧠 graphs/              # LangGraph definitions
+│       │   ├── base/              # Base graph components
+│       │   │   ├── builder.py     # Graph builder utilities
+│       │   │   └── node.py        # Base node implementation
+│       │   └── chat/              # Chat graph implementation
+│       │       ├── edges.py       # Graph edge definitions
+│       │       ├── graph.py       # Main chat graph
+│       │       ├── state.py       # Graph state management
+│       │       └── nodes/         # Graph node implementations
+│       │           ├── llm.py     # LLM node
+│       │           └── tool.py    # Tool execution node
+│       ├── 📊 models/              # Data models
+│       │   └── api/               # API request/response models
+│       │       ├── requests/      # Request schemas
+│       │       │   └── chat.py    # Chat request models
+│       │       └── responses/     # Response schemas
+│       │           └── chat.py    # Chat response models
+│       ├── 🔨 tools/               # LLM tools
+│       │   ├── base.py            # Base tool implementation
+│       │   ├── handler.py         # Tool execution handler
+│       │   └── placeholder.py     # Example tool implementation
+│       └── 🔧 utils/               # Utility functions
+│           └── prompts_utils.py   # Prompt processing utilities
+└── 🧪 tests/                      # Test files
+```
