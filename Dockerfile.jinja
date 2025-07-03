@@ -1,5 +1,5 @@
 # Base image
-ARG BASE_IMAGE=ghcr.io/astral-sh/uv:python{{python-version}}-bookworm-slim
+ARG BASE_IMAGE=ghcr.io/astral-sh/uv:python{{ python_version }}-bookworm-slim
 
 # Stage 1: Build the application
 FROM ${BASE_IMAGE} AS builder
@@ -18,7 +18,7 @@ ADD . /app
 RUN touch README.md && uv sync --frozen --no-dev
 
 # Stage 2: Prepare the runtime base image
-FROM python:{{python-version}}-slim-bookworm AS runtime-base
+FROM python:{{ python_version }}-slim-bookworm AS runtime-base
 COPY --from=builder --chown=app:app /app /app
 ENV PATH="/app/.venv/bin:$PATH"
 WORKDIR /app
