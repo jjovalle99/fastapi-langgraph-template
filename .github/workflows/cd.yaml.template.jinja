@@ -1,4 +1,4 @@
-name: CD
+{% raw %}name: CD
 on:
   workflow_run:
     workflows: [CI]
@@ -13,7 +13,7 @@ env:
   PROJECT_ID: ${{secrets.PROJECT_ID}}
   REGION: ${{secrets.REGION}}
   AR_REPOSITORY: ${{secrets.AR_REPOSITORY}}
-  SERVICE: {{ project_slug }}
+  SERVICE: {% endraw %}{{ project_slug }}{% raw %}
 
 jobs:
   deploy:
@@ -117,4 +117,4 @@ jobs:
               description: description,
               // This is the name that will appear in the UI checks
               context: 'CD / Cloud Run Deploy'
-            });
+            });{% endraw %}
