@@ -1,11 +1,11 @@
 _templates_suffix: .jinja
 
 _tasks:
-  - task: echo "Initializing {{ project_slug }} repository"
-  - task: git init
-  - task: git add .
+  - command: [echo, "Initializing {{ project_slug }} repository"]
+  - command: [git, init]
+  - command: [git, add, .]
     when: "{{ git_auto_commit }}"
-  - task: git commit -m "Initial commit from {{ project_name }} template"
+  - command: [git, commit, -m, "Initial commit from {{ project_name }} template"]
     when: "{{ git_auto_commit }}"
 
 # Project Information
