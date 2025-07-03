@@ -83,5 +83,3 @@ docker-compose*.yml
 # temp/            # Temporary files
 # scripts/         # Development scripts
 notebooks/
-# Copier answers file
-.copier-answers.yml
