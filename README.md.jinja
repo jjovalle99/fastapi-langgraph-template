@@ -1,16 +1,40 @@
 # {{ project_name }}
 
-```
+## Description
+{{ project_description }}
+This project uses Python {{ python_version }}.
+
+## Setup
+
+### Pre-commit hooks
+```bash
 uv tool run pre-commit install
-uv add fastapi[standard] \
+```
+
+### Install dependencies
+These are common dependencies I often use in my projects. 
+Adjust according to your needs.
+
+```bash
+uv add "fastapi[standard]" \
     langgraph-checkpoint-postgres \
     langgraph \
     langsmith \
     loguru \
-    psycopg[binary,pool] \
+    "psycopg[binary,pool]" \
     pydantic-settings
-
 uv add ipykernel ipywidgets --group dev
 uv add pytest pytest-cov pytest-asyncio --group test
 uv add mypy ruff --group lint
 ```
+
+## Deployment
+
+### CD configuration
+The template includes a basic CD configuration for Google Cloud Run 
+deployment. To use it:
+
+1. Remove the `template` suffix from `cd.yaml.template` in the 
+   `.github/workflows` directory.
+2. Configure the appropriate secrets in your GitHub repository.
+3. Update the secrets in the YAML file.
