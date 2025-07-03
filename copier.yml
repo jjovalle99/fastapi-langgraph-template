@@ -1,11 +1,15 @@
 _templates_suffix: .jinja
 
+
 _tasks:
   - command: [git, init]
   - command: [git, add, .]
     when: "{{ git_auto_commit }}"
   - command: [git, commit, -m, "Initial commit from {{ project_name }} template"]
     when: "{{ git_auto_commit }}"
+
+_skip_if_exists:
+  - README
 
 # Project Information
 project_name:
