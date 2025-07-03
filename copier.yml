@@ -1,3 +1,14 @@
+_templates_suffix: .jinja
+
+_tasks:
+  - task: echo "Initializing {{ project_slug }} repository"
+  - task: git init
+  - task: git add .
+    when: "{{ git_auto_commit }}"
+  - task: git commit -m "Initial commit from {{ project_name }} template"
+    when: "{{ git_auto_commit }}"
+
+# Project Information
 project_name:
   type: str
   help: What is the human-readable name of your project?
@@ -10,16 +21,24 @@ project_slug:
 
 project_description:
   type: str
-  help: Provide a short description of the project.
-  default: "A fantastic new service powered by FastAPI."
+  help: Provide a short description of the project
+  default: "A fantastic new service powered by FastAPI"
 
+# Development Configuration
 python_version:
   type: str
   choices: ["3.13", "3.12", "3.11", "3.10"]
   help: Which Python version will this project use?
   default: "3.12"
 
+# CI/CD Configuration
 ci_run_tests:
   type: bool
-  help: Should the CI run tests?
+  help: Should the CI pipeline run tests?
   default: true
+
+# Git Configuration
+git_auto_commit:
+  type: bool
+  help: Should the template automatically commit the initial files?
+  default: false
