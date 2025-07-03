@@ -9,7 +9,7 @@ _tasks:
     when: "{{ git_auto_commit }}"
 
 _skip_if_exists:
-  - README
+  - README.md
 
 # Project Information
 project_name:
