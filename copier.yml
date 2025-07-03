@@ -13,16 +13,6 @@ project_description:
   help: Provide a short description of the project.
   default: "A fantastic new service powered by FastAPI."
 
-author_name:
-  type: str
-  help: What is your name?
-  default: "Your Name"
-
-author_email:
-  type: str
-  help: What is your email address?
-  default: "you@example.com"
-
 python_version:
   type: str
   choices: ["3.13", "3.12", "3.11", "3.10"]

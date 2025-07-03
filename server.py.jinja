@@ -6,6 +6,7 @@ from app.api.routers import chat_router, health_router
 
 app = FastAPI(
     title="{{ project_name }}",
+    description="{{ project_description }}",
     lifespan=lifespan,
 )
 
