@@ -43,14 +43,14 @@ jobs:
             
             - name: Type check
               run: uv run mypy .
-            
-            {% if ci_run_tests %}
-                  - name: Run tests
-                    run: |
-                    uv run pytest \
-                      --cov=src/app \
-                      --cov-report=term-missing \
-                      --cov-fail-under=80 \
-                      --cov-branch \
-                      -v
-            {% endif %}
+            {%- if ci_run_tests %}
+
+            - name: Run tests
+              run: |
+                uv run pytest \
+                  --cov=src/app \
+                  --cov-report=term-missing \
+                  --cov-fail-under=80 \
+                  --cov-branch \
+                  -v
+            {%- endif %}
